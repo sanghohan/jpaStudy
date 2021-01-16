@@ -13,7 +13,7 @@ public class Order {
     @Column(name = "ORDER_ID")
     private Long id;
 
-    @OneToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
@@ -24,14 +24,6 @@ public class Order {
 
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
-
-    public List<OrderItem> getOrderItems() {
-        return orderItems;
-    }
-
-    public void setOrderItems(List<OrderItem> orderItems) {
-        this.orderItems = orderItems;
-    }
 
     public Long getId() {
         return id;
@@ -63,5 +55,11 @@ public class Order {
 
     public void setStatus(OrderStatus status) {
         this.status = status;
+    }
+
+    public void setAddOrderItem(OrderItem orderItem) {
+        orderItem.setOrder(this);
+        orderItems.add(orderItem);
+
     }
 }

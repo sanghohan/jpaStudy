@@ -8,7 +8,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.util.List;
 
 public class JpaMain {
 
@@ -67,24 +66,28 @@ public class JpaMain {
             orderItem3.setOrderPrice(400);
             orderItem3.setCount(100);
 
-            orderItem3.setOrder(findOrder2);
+            //양방향 설정을 해줘야함 ************
+            //orderItem3.chageOrder(findOrder2);
+            //findOrder2.getOrderItems().add(orderItem1);
+            findOrder2.setAddOrderItem(orderItem3);
+
 
             em.persist(orderItem1);
             em.persist(orderItem2);
             em.persist(orderItem3);
 
-            em.flush();
-            em.clear();
+          /* em.flush();
+            em.clear();*/
 
 
-            OrderItem orderItem = em.find(OrderItem.class, orderItem3.getId());
+            /*OrderItem orderItem = em.find(OrderItem.class, orderItem3.getId());
 
-            List<OrderItem> orderItems = orderItem.getOrder().getOrderItems();
+            System.out.println("==================");
             for (OrderItem item : orderItems) {
                 System.out.println("item.getOrderPrice() = " + item.getOrderPrice());
             }
-
-
+            System.out.println("==================");
+*/
 
            /* Order lastFindOrder = em.find(Order.class, 5L);
 
