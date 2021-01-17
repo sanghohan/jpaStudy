@@ -20,6 +20,10 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
 
+    @OneToOne
+    @JoinColumn(name = "LOCKER_ID")
+    private Member member;
+
     public Long getId() {
         return id;
     }
