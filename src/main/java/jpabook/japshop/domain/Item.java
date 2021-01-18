@@ -5,7 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Item {
+@Inheritance(strategy = InheritanceType.JOINED)
+//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS) --> 사용하지 않는게 좋음
+@DiscriminatorColumn
+public abstract class Item {
 
     @Id
     @GeneratedValue
