@@ -52,7 +52,7 @@ public class JpaMain {
 
             em.persist(order2);
 
-            Order findOrder2 = em.find(Order.class, order2.getId());
+            Order findOrder2 = em.getReference(Order.class, order2.getId());
             System.out.println("findOrder.getMember2().getName() = " + findOrder2.getMember().getName());
             System.out.println("findOrder.getMember2().getCity() = " + findOrder2.getMember().getCity());
 

@@ -12,11 +12,11 @@ public class OrderItem {
    /* @Column(name = "ORDER_ID")
     private Long orderId;*/
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY) //EAGER는 기본적으로 사용하면 안된다. jpql에서 성능이 대체로 좋지 않다.
     @JoinColumn(name = "ORDER_ID")
     private Order order;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ITEM_ID")
     private Item item;
 

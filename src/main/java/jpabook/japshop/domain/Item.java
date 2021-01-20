@@ -8,7 +8,7 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.JOINED)
 //@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 //@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS) --> 사용하지 않는게 좋음
-@DiscriminatorColumn
+@DiscriminatorColumn //DTYPE 생성
 public abstract class Item extends BaseEntity {
 
     @Id
